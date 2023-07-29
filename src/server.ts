@@ -7,6 +7,11 @@ const server = http.createServer();
 
 server.listen(port, hostname, () => {
     new ProvaTesteComponent()
+	/*Nesta primeira etapa, implementei a função criarUmNovoLivro e buscarLivro. Detalhes:
+	criarUmNovoLivro:	incluiu implementar mensagem de livros já cadastrados e correção
+						da cláusula de condição do 'if' de acordo com o retorno da função buscarLivro;
+	buscarLivro:		incluiu implementar	a validação para livros já cadastrados;
+	Por fim, exibimos os dados do array em uma tabela dentro do console.*/
 });
 
 export class ProvaTesteComponent {
@@ -17,7 +22,8 @@ export class ProvaTesteComponent {
 		this.criarUmNovoLivro("Harry Potter e a Camara secreta", "Fantasia");
 		this.criarUmNovoLivro("WildCards", "Esportes");
 		this.criarUmNovoLivro("O Trono do Sol", "Fantasia")
-		console.log(this.listarLivrosFantasia())
+		//console.log(this.listarLivrosFantasia())
+		console.table(this.listLivros)
 	}
 
 	initLivros(){
@@ -30,37 +36,35 @@ export class ProvaTesteComponent {
 	}
 
 	criarUmNovoLivro(nome: string, genero: string){
-		if (this.buscarLivro(nome, genero) === 0){
+		if (this.buscarLivro(nome, genero) === -1){//erro
 			const novoLivro: Livro = {
 				id: this.listLivros.length,
 				nome: nome,
 				genero: genero
-			} 
-
+			}
 			this.listLivros.push(novoLivro)
-		} else {
-			/**
-			 * Monte a mensagem de erro avisando que já existe um Livro cadastrado sobre o nome e genero passados
-			 */
+		}
+		else {
+			console.log('Já existe um Livro cadastrado com esse nome e gênero!')
 		}
 	}
 
 	buscarLivro(livro: string, genero: string): number{
 		let indiceLivro: number = -1
 		for (let index = 0; index < this.listLivros.length; index++) {
-			const livro = this.listLivros[index]
-			/**
-             * Implemente a validação onde retorne o Indice do Livro caso encontre um com mesmo nome e genero
-             */
+			const livrox = this.listLivros[index]
+			if(livrox.nome==livro && livrox.genero==genero){
+				return livrox.id
+			}
 		}
 		return indiceLivro
 	}
 
-	listarLivrosFantasia(): string{
-		/**
+	/**listarLivrosFantasia(): string{
+		
 		 * Retorne uma String contendo o nome de todos os Livros que são de fantasia.
-		 */
-	}
+		 
+	}*/
 }
 
 export interface Livro{
