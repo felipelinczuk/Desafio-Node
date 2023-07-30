@@ -7,11 +7,10 @@ const server = http.createServer();
 
 server.listen(port, hostname, () => {
     new ProvaTesteComponent()
-	/*Nesta primeira etapa, implementei a função criarUmNovoLivro e buscarLivro. Detalhes:
-	criarUmNovoLivro:	incluiu implementar mensagem de livros já cadastrados e correção
-						da cláusula de condição do 'if' de acordo com o retorno da função buscarLivro;
-	buscarLivro:		incluiu implementar	a validação para livros já cadastrados;
-	Por fim, exibimos os dados do array em uma tabela dentro do console.*/
+	/*Neste passo 2, implementei a função listarLivrosFantasia. Utilizei 2 arrays, o primeiro,
+	para filtrar os livros do gênero fantasia, e o segunda para filtrar apenas o nome desses livros.
+	Para finalizar, converti o array para texto com o método join, acrescentando vírgula entre os livros.	
+	*/
 });
 
 export class ProvaTesteComponent {
@@ -22,8 +21,8 @@ export class ProvaTesteComponent {
 		this.criarUmNovoLivro("Harry Potter e a Camara secreta", "Fantasia");
 		this.criarUmNovoLivro("WildCards", "Esportes");
 		this.criarUmNovoLivro("O Trono do Sol", "Fantasia")
-		//console.log(this.listarLivrosFantasia())
 		console.table(this.listLivros)
+		console.log(this.listarLivrosFantasia())
 	}
 
 	initLivros(){
@@ -60,11 +59,16 @@ export class ProvaTesteComponent {
 		return indiceLivro
 	}
 
-	/**listarLivrosFantasia(): string{
+	listarLivrosFantasia(): String{
 		
-		 * Retorne uma String contendo o nome de todos os Livros que são de fantasia.
-		 
-	}*/
+		let nomesLivros = []
+		let livrosFantasia = this.listLivros.map((livro) => {
+			if(livro.genero == "Fantasia"){
+				nomesLivros.push(livro['nome'])
+			}
+		})
+		return nomesLivros.join(', ')
+	}
 }
 
 export interface Livro{
