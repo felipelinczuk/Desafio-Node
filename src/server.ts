@@ -7,10 +7,7 @@ const server = http.createServer();
 
 server.listen(port, hostname, () => {
     new ProvaTesteComponent()
-	/*Neste passo 2, implementei a função listarLivrosFantasia. Utilizei 2 arrays, o primeiro,
-	para filtrar os livros do gênero fantasia, e o segunda para filtrar apenas o nome desses livros.
-	Para finalizar, converti o array para texto com o método join, acrescentando vírgula entre os livros.	
-	*/
+	//Detalhes da execução do desafio está no arquivo 'Questões.md' e nos próprios commits
 });
 
 export class ProvaTesteComponent {
