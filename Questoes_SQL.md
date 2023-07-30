@@ -53,10 +53,11 @@ SQL `DELETE FROM Pessoas WHERE Pais_Origem="Brasil"`
 
 5. Quais pessoas já visitaram a França? Monte a consulta que retornará o nome delas;
 SQL `SELECT Nome FROM Pessoas P INNER JOIN Paises_Visitados V ON P.Codigo=V.Codigo_Pessoa WHERE V.Pais_Visitado="França"`
+Alan, e Flávia (menor de idade).
 
 6. Quais são as pessoas que não visitaram nenhum pais? Monte a consulta retornando o nome delas;
 SQL `SELECT Nome FROM Pessoas WHERE Codigo NOT IN (SELECT Codigo_Pessoa FROM Paises_Visitados)`
-
+Isabela e Marcos.
 
 
 ## Observações
